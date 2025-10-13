@@ -20,7 +20,7 @@
 `!python Ingestion.py`
 
 
-##4. Verify the data in PostgreSQL table
+## 4. Verify the data in PostgreSQL table
 
 `from sqlalchemy import create\_engine, text
 
@@ -32,17 +32,17 @@ with engine.connect() as conn:
    print(conn.execute(text("SELECT COUNT(\*) FROM covid\_case\_surveillance")).scalar())
    print(conn.execute(text("SELECT COUNT(DISTINCT res\_state) FROM covid\_case\_surveillance")).scalar())
 
-   # peek a few rows
+   ### peek a few rows
    for row in conn.execute(text("SELECT \* FROM covid\_case\_surveillance LIMIT 5")):
        print(row)
 `      
 
-##5. Run the Transform and Visualization scripts
+## 5. Run the Transform and Visualization scripts
 
 `!python Covid19_Transform.py`
 
 
-##6.Truncate the previously loaded data
+## 6.Truncate the previously loaded data
 
 `from sqlalchemy import create\_engine, text
 engine = create\_engine(os.environ\["PG\_URL"], pool\_pre\_ping=True)
