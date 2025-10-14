@@ -22,7 +22,9 @@
 
 ## 4. Verify the data in PostgreSQL table
 
-`from sqlalchemy import create\_engine, text
+```python
+
+from sqlalchemy import create\_engine, text
 
 import os
 
@@ -32,9 +34,11 @@ with engine.connect() as conn:
    print(conn.execute(text("SELECT COUNT(\*) FROM covid\_case\_surveillance")).scalar())
    print(conn.execute(text("SELECT COUNT(DISTINCT res\_state) FROM covid\_case\_surveillance")).scalar())
 '
+
 ### Preview the data
-   'for row in conn.execute(text("SELECT \* FROM covid\_case\_surveillance LIMIT 5")):
-       print(row)`      
+   ``` for row in conn.execute(text("SELECT \* FROM covid\_case\_surveillance LIMIT 5")):
+       print(row)
+   ``` 
 
 ## 5. Run the Transform and Visualization scripts
 
@@ -43,8 +47,10 @@ with engine.connect() as conn:
 
 ## 6.Truncate the previously loaded data
 
-`from sqlalchemy import create\_engine, text
+```python
+from sqlalchemy import create\_engine, text
 engine = create\_engine(os.environ\["PG\_URL"], pool\_pre\_ping=True)
 
 with engine.begin() as conn:
-   conn.execute(text("TRUNCATE TABLE covid\_case\_surveillance"))`
+   conn.execute(text("TRUNCATE TABLE covid\_case\_surveillance"))
+```
